@@ -8,6 +8,6 @@ public class Config {
 
 	@Bean
 	public PrimeService primeService() {
-		return new SimplePrimeService();
+		return new SimplePrimeService(new BasicPrimeChecker());
 	}
 }

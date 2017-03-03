@@ -9,13 +9,13 @@ import java.util.Iterator;
 import org.junit.Before;
 import org.junit.Test;
 
-public class SimplePrimeServiceTest {
+public class CachingPrimeServiceTest {
 
 	private PrimeService service;
 
 	@Before
 	public void setup() {
-		service = new SimplePrimeService(new BasicPrimeChecker());
+		service = new CachingPrimeService(new BasicPrimeChecker());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
