@@ -43,4 +43,13 @@ public class PrimeServiceIntegerationTest {
 				"<PrimeSequence><initial>10</initial><primes><primes>2</primes><primes>3</primes><primes>5</primes><primes>7</primes></primes></PrimeSequence>"));
 	}
 
+	@Test
+	public void throw400ErrorForBadRequest() {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+		HttpEntity<String> entity = new HttpEntity<String>(headers);
+		String body = rest.exchange("/primes/0", HttpMethod.GET, entity, String.class).getBody();
+		assertThat(body, is("Maximum prime must be greater than one"));
+	}
+
 }
